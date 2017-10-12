@@ -7,26 +7,26 @@ before_install:
   - gem update bundler --no-doc
   - smoke/provision.sh
 rvm:
-  - 2.2.8
-  - 2.3.5
+  # - 2.2.8
+  # - 2.3.5
   - 2.4.2
-  - ruby-head
+  # - ruby-head
 env:
   - TEST_TASK=spec
 
 matrix:
   allow_failures:
-    - rvm: jruby-head
-    - rvm: ruby-head
-    - rvm: jruby-9.1.5.0
+    # - rvm: jruby-head
+    # - rvm: ruby-head
+    # - rvm: jruby-9.1.5.0
     - rvm: 2.4.2
       env: TEST_TASK=smoke influx_version=nightly channel=nightlies
   include:
-    - rvm: 2.4.2
-      env: TEST_TASK=rubocop
-    - rvm: jruby-9.1.5.0
-    - rvm: jruby-head
-      env: TEST_TASK=spec JRUBY_OPTS='--client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-Xss2m -J-Xmx256M'
+    # - rvm: 2.4.2
+    #   env: TEST_TASK=rubocop
+    # - rvm: jruby-9.1.5.0
+    # - rvm: jruby-head
+    #   env: TEST_TASK=spec JRUBY_OPTS='--client -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1 -J-Xss2m -J-Xmx256M'
     - rvm: 2.4.2
       env: TEST_TASK=smoke influx_version=1.0.2 pkghash=3e4c349cb57507913d9abda1459bdbed
     - rvm: 2.4.2
